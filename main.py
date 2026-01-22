@@ -39,7 +39,7 @@ payload = {
     "user_name": USER,
     "user_password": PASS,
     #"csrftoken": csrf_val,
-    "token": token_val,
+    #"token": token_val,
     "hashDevice": "" # Add if required by your site
 }
 
