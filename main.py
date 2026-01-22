@@ -31,7 +31,7 @@ login_url =  "https://app.easygoholidayhomes.com"
 login_page = session.get(login_url)
 soup = BeautifulSoup(login_page.text, 'html.parser')
 
-Scrape the dynamic tokens
+#Scrape the dynamic tokens
 csrf_val = soup.find('input', {'name': 'csrftoken'})['value'] if soup.find('input', {'name': 'csrftoken'}) else ""
 token_val = soup.find('input', {'name': 'token'})['value'] if soup.find('input', {'name': 'token'}) else ""
 
