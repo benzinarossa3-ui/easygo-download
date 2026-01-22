@@ -1,4 +1,12 @@
 import os
+
+# Securely grab credentials from GitHub Secrets
+user = os.environ.get("SITE_EMAIL")
+pw = os.environ.get("SITE_PASSWORD")
+
+
+
+
 import json
 import requests
 import gspread
@@ -13,8 +21,8 @@ res = session.get(login_url)
 soup = BeautifulSoup(res.text, 'html.parser')
 
 payload = {
-    "user_name": "alessandrozocca@live.it",
-    "user_password": "Casadubai1!",
+    "user_name": user,
+    "user_password": pw,
     "csrftoken": soup.find('input', {'name': 'csrftoken'})['value'],
     "token": soup.find('input', {'name': 'token'})['value'],
 }
