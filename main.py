@@ -38,7 +38,7 @@ soup = BeautifulSoup(login_page.text, 'html.parser')
 payload = {
     "user_name": USER,
     "user_password": PASS,
-    "csrftoken": csrf_val,
+    #"csrftoken": csrf_val,
     "token": token_val,
     "hashDevice": "" # Add if required by your site
 }
