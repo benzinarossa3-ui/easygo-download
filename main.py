@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 # These names must match your GitHub Secrets exactly
 USER = os.environ.get("SITE_EMAIL")
 PASS = os.environ.get("SITE_PASSWORD")
-COOKIE_VAL = os.environ.get("SESSION_COOKIE") # For bypassing 2FA
+COOKIE_VAL = os.environ.get("SESSION_COOKIE")
 
 # --- 2. SETUP SESSION ---
 session = requests.Session()
