@@ -16,8 +16,7 @@ PASS = os.environ.get("SITE_PASSWORD")
 # --- 2. SETUP SESSION ---
 session = requests.Session()
 #session.headers.update({
- #   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-})
+ #   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"})
 
 # --- 3. BYPASS 2FA (If using the Cookie Method) ---
 # If you have a session cookie, we inject it here to pretend we are already logged in
