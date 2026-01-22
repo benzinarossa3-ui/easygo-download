@@ -20,11 +20,20 @@ session.headers.update({
 
 # --- 3. BYPASS 2FA (If using the Cookie Method) ---
 # If you have a session cookie, we inject it here to pretend we are already logged in
+# Updated Section 3 in main.py
+REMEMBER_VAL = os.environ.get("REMEMBERME_COOKIE")
 
 if COOKIE_VAL:
-    # We use 'PHPSESSID' because that is what your screenshot shows
-    session.cookies.set('PHPSESSID', COOKIE_VAL, domain='app.easygo.com') 
-    print("PHPSESSID cookie injected.")
+    # Inject the session ID
+    session.cookies.set('PHPSESSID', COOKIE_VAL, domain='app.easygo.com')
+    
+    # Inject the remember me token (if you added the secret)
+    if REMEMBER_VAL:
+        session.cookies.set('rememberme', REMEMBER_VAL, domain='app.easygo.com')
+        
+    print("Cookies injected.")
+
+
 
 # --- 4. LOGIN PROCESS (If not using cookies or if cookies expired) ---
 login_url =  "https://app.easygoholidayhomes.com"
