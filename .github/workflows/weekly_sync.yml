@@ -2,8 +2,10 @@ name: Weekly Data Sync
 
 on:
   schedule:
-    - cron: '0 9 * * 1' # Runs at 09:00 UTC every Monday
-  workflow_dispatch:   # Allows you to run it manually for testing
+    # This runs at 09:00 UTC every Monday. 
+    # Change the numbers to change the time.
+    - cron: '0 9 * * 1' 
+  workflow_dispatch:   # This allows you to click the "Run" button manually
 
 jobs:
   build:
@@ -18,9 +20,15 @@ jobs:
           python-version: '3.10'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4 gspread pandas
 
       - name: Run script
         env:
+          # This connects your GitHub Secrets to the Python script
           GOOGLE_SHEETS_CREDS: ${{ secrets.GOOGLE_SHEETS_CREDS }}
+          SITE_EMAIL: ${{ secrets.SITE_EMAIL }}
+          SITE_PASSWORD: ${{ secrets.SITE_PASSWORD }}
+          SESSION_COOKIE: ${{ secrets.SESSION_COOKIE }}
         run: python main.py
